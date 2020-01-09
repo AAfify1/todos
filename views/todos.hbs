@@ -1,8 +1,11 @@
-  <ul>
-    {{#each todos}}
-      <li>
-          <input type="checkbox">
-          <span>{{this}}</span>
-      </li>
-    {{/each}}
-  </ul>
+<div class="container">
+  <div class="well todos">
+    {{> add}}
+    <ul class ="list-group">
+      {{#each todos}}
+      {{> todo this}}
+      {{/each}}
+    </ul>
+    {{> footer}}
+  </div>
+</div>
