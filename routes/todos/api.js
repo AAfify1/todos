@@ -61,4 +61,33 @@ router.route('/:id')
     })
 });
 
+router.route('/instagram/:id')
+.get(function(req,res,next){
+    res.json('hi')
+})
+.put(function(req,res,next){
+    var todo = {};
+    var prop;
+    for (prop in req.body) {
+        todo[prop] = req.body[prop];
+    }
+    Todo.updateAsync({_id: req.params.id},todo)
+    .then (function(updatedTodo){
+        return res.json({'status':'success', 'todo': updatedTodo})
+    })
+    .catch(function(e){
+        return res.status(400).json({'status': 'fail', 'error': e});
+    });
+})
+.delete(function(req,res,next) {
+    Todo.findByIdAndRemoveAsync(req.params.id)
+    .then(function(deletedTodo){
+        res.json({'status':'success','todo':deletedTodo});
+    })
+    .catch(function(e) {
+         res.status(400).json({'status': 'fail', 'error': e});
+
+    })
+});
+
     module.exports = router;

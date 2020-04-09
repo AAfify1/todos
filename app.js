@@ -14,6 +14,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var todosRouter = require('./routes/todos/index');
 var todosAPIRouter = require('./routes/todos/api');
+var instagramRouter = require('./routes/instagram')
 
 var app = express();
 
@@ -58,7 +59,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/fonts', express.static(path.join(__dirname, 'node_modules/bootstrap-sass/assets/fonts')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/instagram', usersRouter);
 app.use('/todos',todosRouter);
 app.use('/api/todos',todosAPIRouter);
 
